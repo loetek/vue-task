@@ -8,7 +8,6 @@ export default {
     props: {
         btnText: String,
         btnColor: String,
-
     },
     methods:{
         onClick(){

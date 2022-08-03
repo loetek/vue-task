@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <Header title="Vue Task Tracker"></Header>
-  <Tasks :tasks="tasks"></Tasks>
+  <Tasks @delete-task="deleteTask" :tasks="tasks"></Tasks>
   </div>
 </template>
 
@@ -22,6 +22,11 @@ export default {
       tasks: []
     }
   },
+  methods:{
+    deleteTask(id){
+      this.tasks = this.tasks.filter((task) => task.id !== id )
+    }
+  },
   created(){
     this.tasks = [
       {
@@ -31,13 +36,13 @@ export default {
         reminder: true
       },
          {
-        id: 1,
+        id: 2,
         text: 'Dentist appt',
         day: 'March 5',
-        reminder: true
+        reminder: false
       },
          {
-        id: 1,
+        id: 3,
         text: 'Party',
         day: 'March 9th',
         reminder: true
