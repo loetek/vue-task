@@ -1,19 +1,22 @@
 <template>
-    <button @click="onClick()" :style="{ background: btnColor }" class='btn'>{{btnText}}</button>
+    <AddTask ref='modal'></AddTask>
+    <button @click="onClick()" backgroundColor={{bntColor}}>{{btnText}}</button>
 </template>
 
 <script>
+import AddTask from './AddTask.vue'
 export default {
-    name: 'Button',
+    name: "Button",
     props: {
         btnText: String,
         btnColor: String,
     },
-    methods:{
-        onClick(){
-            console.log('testClick')
-        }
+    methods: {
+        onClick() {
+      this.$refs.modal.show() //executing the show method for the modal.
     }
+        },
+    components: { AddTask }
 }
 </script>
 

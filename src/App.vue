@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <Header title="Vue Task Tracker"></Header>
-  <Tasks @delete-task="deleteTask" :tasks="tasks"></Tasks>
+  <Tasks @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks"></Tasks>
   </div>
 </template>
 
@@ -24,7 +24,13 @@ export default {
   },
   methods:{
     deleteTask(id){
-      this.tasks = this.tasks.filter((task) => task.id !== id )
+      if(confirm('Are you sure???')){
+        this.tasks = this.tasks.filter((task) => task.id !== id )
+      }
+    },
+    toggleReminder(id){
+      //Object literal spread operator. Toggling the value based based on the key to the matching id.
+      this.tasks = this.tasks.map((task) => task.id === id ? {...task, reminder : !task.reminder} : task )
     }
   },
   created(){
