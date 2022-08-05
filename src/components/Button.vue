@@ -1,6 +1,6 @@
 <template>
     <AddTask ref='modal'></AddTask>
-    <button @click="onClick()" backgroundColor={{bntColor}}>{{btnText}}</button>
+    <button @click="onClick()" :style="{ background: btnColor }" class="btn" >{{btnText}}</button>
 </template>
 
 <script>

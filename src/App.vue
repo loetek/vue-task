@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <Header title="Vue Task Tracker"></Header>
+  <Header title=" Task Tracker"></Header>
   <Tasks @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks"></Tasks>
   </div>
 </template>
@@ -73,7 +73,7 @@ body {
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  border: 1px solid black;
   padding: 30px;
   border-radius: 5px;
 }
