@@ -25,7 +25,6 @@
         <label>Set Reminder</label>
       <input type="checkbox" v-model="reminder" name="reminder" />
     </div>
-
     <input @click="hide" type="submit" value="Save Task" class="btn btn-block" />
   </form>
     </div>
@@ -38,10 +37,31 @@
 export default {
    data() {
      return {
+      text:'',
+      day: '',
+      reminder: false,
       showModal: false
      }
    },
    methods: {
+    onSubmit(e){
+      e.preventDefault();
+      if(!this.text){
+        alert('Please add a task.')
+        return
+      }
+      const newTask = {
+        id: Math.floor(Math.random() * 99999),
+        text: this.text,
+        day: this.day,
+        reminder: this.reminder
+      }
+      this.$emit('add-task', newTask)
+
+      this.text = ''
+      this.day = ''
+      this.reminder = false
+    },
      show() {
       this.showModal = true
      },
@@ -67,7 +87,7 @@ export default {
   z-index: 999;
   top: 20%;
   left: 50%;
-  width: 400px;
+  width: 300px;
   margin-left: -150px;
   background-color: #f4f4f4;
   display: flex;
@@ -76,8 +96,6 @@ export default {
   padding-top: 30px;
   padding-bottom: 30px;
   border-radius: 6px;
-  border-style: solid;
-  border-color: black;
 
 }
 .add-form {

@@ -1,6 +1,8 @@
 <template>
 <div class="container">
   <Header title=" Task Tracker"></Header>
+  <!-- Having problems floating up the newTasks from 2 levels down. -->
+  <AddTask @add-task="addTask"></AddTask>
   <Tasks @delete-task="deleteTask" @toggle-reminder="toggleReminder" :tasks="tasks"></Tasks>
   </div>
 </template>
@@ -8,6 +10,7 @@
 <script>
 import Header from './components/Header.vue'
 import Tasks from './components/Tasks.vue'
+import AddTask from './components/AddTask.vue'
 // import Footer from './components/Footer.vue'
 
 export default {
@@ -16,13 +19,19 @@ export default {
     Header,
     // Footer,
     Tasks,
-  },
+    AddTask
+},
   data(){
     return{
       tasks: []
     }
   },
   methods:{
+    addTask(newTask){
+      this.tasks = [...this.tasks, newTask]
+      console.log(this.tasks)
+    },
+
     deleteTask(id){
       if(confirm('Are you sure???')){
         this.tasks = this.tasks.filter((task) => task.id !== id )
@@ -69,13 +78,16 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 .container {
+  background-color: #D5DBDB;
   max-width: 500px;
-  margin: 30px auto;
+  margin: 80px auto;
   overflow: auto;
-  min-height: 300px;
-  border: 1px solid black;
+  min-height: 600px;
+  /* border: 1px solid black; */
   padding: 30px;
   border-radius: 5px;
+  width:100%;
+  height:100%;
 }
 .btn {
   display: inline-block;
@@ -99,5 +111,21 @@ body {
 .btn-block {
   display: block;
   width: 100%;
+}
+
+html, body {
+  margin:0;
+  height:100%;
+
+  background: hsla(153, 47%, 49%, 1);
+
+background: radial-gradient(circle, hsla(153, 47%, 49%, 1) 0%, hsla(290, 79%, 13%, 1) 95%);
+
+background: -moz-radial-gradient(circle, hsla(153, 47%, 49%, 1) 0%, hsla(290, 79%, 13%, 1) 95%);
+
+background: -webkit-radial-gradient(circle, hsla(153, 47%, 49%, 1) 0%, hsla(290, 79%, 13%, 1) 95%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#42B883", endColorstr="#34073D", GradientType=1 );
+
 }
 </style>

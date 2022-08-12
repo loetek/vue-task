@@ -1,5 +1,5 @@
 <template>
-    <AddTask ref='modal'></AddTask>
+    <AddTask @add-task="$emit('add-task', newTask)" ref='modal'></AddTask>
     <button @click="onClick()" :style="{ background: btnColor }" class="btn" >{{btnText}}</button>
 </template>
 

@@ -24,22 +24,7 @@ export default {
   padding: 10px 20px;
   cursor: pointer;
   border-radius:6px;
-  /* animation-name: color;
-  animation-duration: 1s;
-  animation-iteration-count: 1; */
 }
-
-/* @keyframes color {
-  0% {
-    background-color: #e4e4e4;
-  }
-  50% {
-    background-color: white;
-  }
-  100% {
-    background-color: #e4e4e4;
-  }
-} */
 
 .task:hover{
   background: white;
